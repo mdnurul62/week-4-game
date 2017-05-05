@@ -1,0 +1,12 @@
+
+
+img {
+	border-radius: 50%;
+	width: 100px;
+	height: auto;
+	position: relative;
+}
+
+.container {
+	text-align: center;
+}
