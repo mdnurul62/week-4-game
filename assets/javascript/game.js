@@ -44,7 +44,7 @@
 //------------------------------
 
 
-//functions
+
 $(document).ready(function() { 
 var targetNumber = 0;
 var totalScore = 0;
@@ -52,20 +52,14 @@ var crystalValue = [];
 var gameOver = false;
 
 
-function toTargetNumber() {
-	var randomTargetNumber = Math.floor(Math.random()*100) + 21;
-	if (randomTargetNumber > 18 && randomTargetNumber <= 120) {
-		targetNumber = randomTargetNumber;
-		$("#target-number").text(targetNumber);
-	}
-}
-toTargetNumber();
+var targetNumber = Math.floor(Math.random()*(121 - 19)) + 19;
+	$("#target-number").text(targetNumber);
+
 
 function toCrystalValue() {
 	
-	//console.log(randomNum);
 	while (crystalValue.length < 4) {
-		var randomNum = Math.floor(Math.random()*12) + 1;
+		var randomNum = Math.floor(Math.random()*(13 - 1)) + 1;
 		if(crystalValue.indexOf(randomNum) < 0) {
 		crystalValue.push(randomNum);
 		}
@@ -74,16 +68,18 @@ function toCrystalValue() {
 
 toCrystalValue();
 
-
-
-
-//Main process
+function updateGame(){
+	var targetNumber = 0;
+	var totalScore = 0;
+	var crystalValue = [];
+	var gameOver = false;
+}
 
 	$("#image-1").on("click", function() {
 		if (gameOver === false) {
 			totalScore = totalScore + crystalValue[0];
 			$("#your-score").text(totalScore);
-			reset();
+			determineWinnerLosser();
 		}
 	});
 
@@ -91,7 +87,7 @@ toCrystalValue();
 		if (gameOver === false) {
 			totalScore = totalScore + crystalValue[1];
 			$("#your-score").text(totalScore);
-			reset();
+			determineWinnerLosser();
 		}
 	});
 
@@ -99,7 +95,7 @@ toCrystalValue();
 		if (gameOver === false) {
 			totalScore = totalScore + crystalValue[2];
 			$("#your-score").text(totalScore);
-			reset();
+			determineWinnerLosser();
 		}
 	});
 
@@ -107,26 +103,26 @@ toCrystalValue();
 		if (gameOver === false) {
 			totalScore = totalScore + crystalValue[3];
 			$("#your-score").text(totalScore);
-			reset();
+			determineWinnerLosser();
 		}
 	});
 
-	function reset() {
+	function determineWinnerLosser() {
 		if (totalScore === targetNumber ) {
 			gameOver == true;
 			$("#you-win").text("You win!");
 			alert("You won the game, play again.");
+			updateGame();
 		}
 
 		else if (totalScore > targetNumber ) {
 			gameOver == true;
 			$("#you-lose").text("You lose!");
 			alert("You lost the game, try again.")
+			updateGame();
 			
 		}
 	}
-
-	reset();
 });
 
 
