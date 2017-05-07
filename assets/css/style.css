@@ -1,5 +1,4 @@
 
-
 img {
 	border-radius: 50%;
 	width: 100px;
@@ -9,4 +8,5 @@ img {
 
 .container {
 	text-align: center;
+	background-color: #666;
 }

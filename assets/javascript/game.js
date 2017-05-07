@@ -19,29 +19,12 @@
 //=============
 //Variables
 //--------------
-//To generate randomly target number
-
-
-
-//console.log(crystalValue);
-//-------------------
-//To generate randomly crystal value
-//var crystalValue = Math.floor(Math.random()*13);
+//functions
 //test
-//console.log(crystalValue);
-//--------------------------
-//To store crystal value
-//crystalValue = parseInt(crystalValue);
-//--------------------
-//To assign randomly generated number to each crystal 
-
-//To add crystal value
-//var crystalValueCounter = 0;
-//crystalValueCounter += crystalValue;
-//console.log(crystalValueCounter);
-//To display total score
-//$("#your-score").text(crystalValueCounter)
-//------------------------------
+//-------------------
+//Main process
+//test
+//-----------
 
 
 
@@ -73,6 +56,7 @@ function updateGame(){
 	var totalScore = 0;
 	var crystalValue = [];
 	var gameOver = false;
+	toCrystalValue();
 }
 
 	$("#image-1").on("click", function() {
@@ -111,14 +95,14 @@ function updateGame(){
 		if (totalScore === targetNumber ) {
 			gameOver == true;
 			$("#you-win").text("You win!");
-			alert("You won the game, play again.");
+			alert("You won the game, play again!");
 			updateGame();
 		}
 
 		else if (totalScore > targetNumber ) {
 			gameOver == true;
 			$("#you-lose").text("You lose!");
-			alert("You lost the game, try again.")
+			alert("You lost the game, try again!")
 			updateGame();
 			
 		}
